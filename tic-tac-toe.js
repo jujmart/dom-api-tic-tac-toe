@@ -36,6 +36,7 @@ window.addEventListener("DOMContentLoaded", event => {
     });
     
     board.addEventListener("click", event => {
+        console.log(count);
         if (!winner) {
             if (event.target.id !== "stop") {
                 count++;
@@ -51,7 +52,12 @@ window.addEventListener("DOMContentLoaded", event => {
                     printWinner(oMoves, "O");
                 }
             }
-        }
+            if (count === 9) {
+                header.innerText = `Winner: None`;
+                giveUp.disabled = true;
+                winner = true;
+            }
+        } 
     });
 
     let newGameButton = document.querySelector("button");
